@@ -1,27 +1,13 @@
 import { Recipe, RecipeResponse } from "../interfaces/recipe";
 
-// export async function fetchRecipes() {
-//   const response = await fetch(
-//     `https://dummyjson.com/recipes`, {cache: 'no-store'}
-//   );
-//   const data: Recipe[] = await response.json();
+export async function fetchAllRecipes(limit = 8, skip = 0) {
+  const response = await fetch(
+    `https://dummyjson.com/recipes?limit=${limit}&skip=${skip}`,{ cache: 'no-store' }
+  );
+  const { recipes, total }: RecipeResponse = await response.json();
 
-//   return { data};
-// }
-export async function fetchAllRecipes() {
-  const response = await fetch("https://dummyjson.com/recipes");
-  const { recipes }: RecipeResponse = await response.json();
-
-  return recipes;
+  return { recipes, total };
 }
-// export async function fetchAllRecipes(limit = 8, skip = 0) {
-//   const response = await fetch(
-//     `https://dummyjson.com/recipes?limit=${limit}&skip=${skip}`
-//   );
-//   const { recipes, total }: RecipeResponse = await response.json();
-
-//   return { recipes, total };
-// }
 
 export async function fetchRecipeById(id: string) {
   const response = await fetch(`https://dummyjson.com/recipes/${id}`);
