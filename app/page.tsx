@@ -6,7 +6,7 @@ import { Recipe } from "@/lib/interfaces/recipe";
 export default async function Home({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
   //const currentPage = Number(searchParams.page) || 1;
   const pageStr = searchParams.page;
-const currentPage = Array.isArray(pageStr) ? Number(pageStr[0]) : Number(pageStr) || 1;
+  const currentPage = Array.isArray(pageStr) ? Number(pageStr[0]) : Number(pageStr) || 1;
 
   const limit = 8;
   const page = Number(searchParams.page) || 1;
@@ -18,11 +18,11 @@ const currentPage = Array.isArray(pageStr) ? Number(pageStr[0]) : Number(pageStr
   return (
     <main className="h-dvh p-8">
       <header className="py-20">
-        <h1 className="text-xl font-bold">Receptsidan {new Date().toLocaleDateString()}</h1>
+        <h1 className="text-xl font-bold justify-self-center">Receptsidan {new Date().toLocaleDateString()}</h1>
       </header>
       <div>
         <BasicPagination currentPage={page} totalPages={totalPages} />
-        <ul className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 content-stretch">
+        <ul className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 content-stretch">
           {recipes.map((recipe: Recipe, index: number) => (
             <Card key={index} recipe={recipe} />
           ))}

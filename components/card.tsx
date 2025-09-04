@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Card({ recipe, className }: { recipe: Recipe; className?: string }) {
     return (
-        <article className="border-2 rounded-3xl p-8 shadow-cyan-100 shadow-md">
+        <article className="border-2 rounded-3xl p-8 shadow-cyan-400 shadow-sm">
             <header className="justify-items-center">
                 <h2 className="text-lg font-bold mb-2">{recipe.name}</h2>
                 <p className="mb-2">{recipe.mealType}</p>
